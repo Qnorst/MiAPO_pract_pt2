@@ -73,7 +73,6 @@ func main() {
 	http.HandleFunc("/divide", calculate)
 
 	fmt.Println("Listening on port 8080...")
-	fmt.Println("Antipov to sinok paluchaetsa")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		fmt.Println(err)
