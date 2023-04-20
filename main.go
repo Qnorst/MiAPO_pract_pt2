@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 )
@@ -25,6 +26,13 @@ func subtract(num1, num2 float64) float64 {
 
 func multiply(num1, num2 float64) float64 {
 	return num1 * num2
+}
+
+func divide(num1, num2 float64) (float64, error) {
+	if num2 == 0 {
+		return 0, errors.New("division by zero")
+	}
+	return num1 / num2, nil
 }
 
 func calculate(w http.ResponseWriter, r *http.Request) {
@@ -65,6 +73,7 @@ func main() {
 	http.HandleFunc("/divide", calculate)
 
 	fmt.Println("Listening on port 8080...")
+	fmt.Println("Antipov to sinok paluchaetsa")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		fmt.Println(err)
