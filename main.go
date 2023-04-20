@@ -15,6 +15,10 @@ type CalculationResponse struct {
 	Result float64 `json:"result"`
 }
 
+func add(num1, num2 float64) float64 {
+	return num1 + num2
+}
+
 func calculate(w http.ResponseWriter, r *http.Request) {
 	var req CalculationRequest
 	err := json.NewDecoder(r.Body).Decode(&req)
